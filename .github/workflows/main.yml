@@ -98,6 +98,9 @@ jobs:
              with:
                  python-version: 3.8.x
 
+           - name: Install connector
+             run:  pip install snowflake-connector-python --upgrade
+
            - name: Inserting data
              env:
                SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
