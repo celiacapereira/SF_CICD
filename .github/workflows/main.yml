@@ -80,7 +80,6 @@ jobs:
               with:
                 python-version: 3.8.x
             - name: Run schemachange
-            - name: Run schemachange
               env:
                 SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
                 SF_USERNAME: ${{ secrets.SF_USERNAME }}
