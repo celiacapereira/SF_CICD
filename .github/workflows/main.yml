@@ -108,7 +108,8 @@ jobs:
              run: pip install snowflake-connector-python[pandas] --upgrade
              
            - name: Install glob
-             run:  pip install glob
+             run:  pip install glob2 --upgrade 
+
 
 
            - name: Inserting data
