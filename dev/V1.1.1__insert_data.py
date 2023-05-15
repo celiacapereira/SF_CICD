@@ -104,6 +104,6 @@ result = """ CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.T
 
 # with open(f"migrations/{new_filename}", "w") as f:
 #     f.write(result)
-file = open('/{new_filename}', 'w')
+file = open('migrations/{new_filename}', 'w')
 file.write('result')
 file.close()
