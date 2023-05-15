@@ -75,6 +75,11 @@ jobs:
             name: Pre-Prod
           needs: build   
           steps:
+            - name: Use Python 3.8.x
+              uses: actions/setup-python@v2.2.1
+              with:
+                python-version: 3.8.x
+            - name: Run schemachange
             - name: Run schemachange
               env:
                 SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
