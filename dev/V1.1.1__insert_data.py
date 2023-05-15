@@ -99,11 +99,8 @@ filename = latest_file[latest_file.find("V"):len(latest_file)]
 new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
 print(new_filename)
 
-result = """ CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
- DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """
 
-# with open(f"migrations/{new_filename}", "w") as f:
-#     f.write(result)
 file = open('migrations/{new_filename}', 'w')
-file.write('result')
+file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
+ DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
 file.close()
