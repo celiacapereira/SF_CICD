@@ -1,0 +1,93 @@
+
+name: Testing workflow
+
+on:
+  push:
+    branches: [ "main" ]
+    # paths:
+    #   - 'testes/**'    
+
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: List all files
+        run: ls
+
+      - name: Install Python 
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      
+      - name: Install connector 
+        run: pip install snowflake-connector-python --upgrade
+
+      - name: Install pandas 
+        run: pip install pandas --upgrade
+
+      - name: Install pandas snowflake
+        run: pip install snowflake-connector-python[pandas] --upgrade
+            
+      - name: Run dataframe  
+        env:
+          SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
+          SF_PASSWORD: ${{secrets.SF_PASSWORD}}
+          SF_USERNAME: ${{secrets.SF_USERNAME}}
+        run: python testes/connection.py        
+
+      - name: Run null tests  
+        env:
+          SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
+          SF_PASSWORD: ${{secrets.SF_PASSWORD}}
+          SF_USERNAME: ${{secrets.SF_USERNAME}}
+        run: python testes/is_null.py
+
+      - name: Run row tests
+        env:
+          SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
+          SF_PASSWORD: ${{secrets.SF_PASSWORD}}
+          SF_USERNAME: ${{secrets.SF_USERNAME}}
+        run: python testes/row_number.py
+
+      - name: run col tests
+        env:
+          SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
+          SF_PASSWORD: ${{secrets.SF_PASSWORD}}
+          SF_USERNAME: ${{secrets.SF_USERNAME}}      
+        run: python testes/col_number.py
+
+      - name: Insert_Data_to_sf
+        env:
+          SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
+          SF_PASSWORD: ${{secrets.SF_PASSWORD}}
+          SF_USERNAME: ${{secrets.SF_USERNAME}}      
+        run: python dev/V1.1.1__insert_data.py
+        
+  deploy-snowflake-changes-job:
+          runs-on: ubuntu-latest
+          environment:
+            name: Pre-Prod
+          needs: build   
+          steps:
+            - name: Run schemachange
+              env:
+                SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+                SF_USERNAME: ${{ secrets.SF_USERNAME }}
+                SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
+                SF_ROLE: ACCOUNTADMIN
+                SF_WAREHOUSE: COMPUTE_WH
+                SF_DATABASE: DEV
+              run: |
+                echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+                python --version
+                echo "Step 1: Installing schemachange"
+                pip install schemachange
+                
+                echo "Step 2: Running schemachange"
+                schemachange -f $GITHUB_WORKSPACE/migrations -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
