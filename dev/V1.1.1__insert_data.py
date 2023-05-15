@@ -102,6 +102,6 @@ print(new_filename)
 result = """ CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """
 
-with open(f"migrations/{new_filename}", "w") as f:
+with open(f"/migrations/{new_filename}", "w") as f:
     f.write(result)
     
