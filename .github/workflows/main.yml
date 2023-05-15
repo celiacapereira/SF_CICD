@@ -45,12 +45,15 @@ jobs:
           runs-on: ubuntu-latest
           needs: build   
           steps:
-           - name: Runn null testes
+           - uses: actions/checkout@v3
+
+           - name: Run null testes
              env:
               SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
               SF_PASSWORD: ${{secrets.SF_PASSWORD}}
               SF_USERNAME: ${{secrets.SF_USERNAME}}            
              run: python testes/is_null.py
+             
 
            - name: Runn row testes
              env:
@@ -59,7 +62,7 @@ jobs:
               SF_USERNAME: ${{secrets.SF_USERNAME}}            
              run: python testes/row_number.py
 
-           - name: Runn col testes
+           - name: Run col testes
              env:
               SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
               SF_PASSWORD: ${{secrets.SF_PASSWORD}}
