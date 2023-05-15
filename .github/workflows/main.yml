@@ -46,6 +46,20 @@ jobs:
           needs: build   
           steps:
            - uses: actions/checkout@v3
+          
+           - name: Install Python 
+             uses: actions/setup-python@v2
+             with:
+               python-version: '3.7'
+
+           - name: Install connector
+             run:  pip install snowflake-connector-python --upgrade
+        
+           - name: Install pandas 
+             run: pip install pandas --upgrade
+        
+           - name: Install pandas snowflake
+             run: pip install snowflake-connector-python[pandas] --upgrade 
 
            - name: Run null testes
              env:
