@@ -104,4 +104,4 @@ file = open('migrations/{new_filename}', 'w+')
 file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
 file.close()
-print(file.read())
+print(file)
