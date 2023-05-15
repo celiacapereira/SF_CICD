@@ -90,7 +90,7 @@ cursor.close()
 import glob
 import os
 
-list_of_files = glob.glob('/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/*') # * means all if need specific format then *.csv
+list_of_files = glob.glob('/celiacapereira/SF_CICD/migrations/*') # * means all if need specific format then *.csv
 latest_file = max(list_of_files, key=os.path.getctime)
 filename = latest_file[latest_file.find("V"):len(latest_file)]
 
@@ -105,6 +105,6 @@ result = """ CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.T
 # f= open(f"{new_name}.sql","w+") 
 # f.write(result)
 
-with open(f"/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/{new_filename}", "w") as f:
+with open(f"/celiacapereira/SF_CICD/migrations/{new_filename}", "w") as f:
     f.write(result)
     
