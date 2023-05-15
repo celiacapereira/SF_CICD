@@ -105,7 +105,10 @@ jobs:
              run: pip install pandas --upgrade
         
            - name: Install pandas snowflake
-             run: pip install snowflake-connector-python[pandas] --upgrade              
+             run: pip install snowflake-connector-python[pandas] --upgrade
+             
+           - name: Install sqlite3
+             run:  
 
            - name: Inserting data
              env:
