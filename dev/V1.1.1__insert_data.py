@@ -99,6 +99,10 @@ file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT
  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
 print(file)
 
+with open(f'migrations/{new_filename}', 'r') as f2:
+    data = f2.read()
+    print(data)
+
 print(list_of_files)
 
 
