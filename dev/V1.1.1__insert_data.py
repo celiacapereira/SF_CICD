@@ -85,20 +85,20 @@ import os
 
 list_of_files = glob.glob('migrations/*') # * means all if need specific format then *.csv
 latest_file = max(list_of_files, key=os.path.getctime)
-# filename = latest_file[latest_file.find("V"):len(latest_file)]
+filename = latest_file[latest_file.find("V"):len(latest_file)]
 
-# # print(filename)
+# print(filename)
 
-# new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
-# print(new_filename)
+new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
+print(new_filename)
 
 
-# file = open(f'migrations/{new_filename}', 'w+')
-# # file = open(f'migrations/{new_filename}', 'x')
+file = open(f'migrations/{new_filename}', 'w+')
+# file = open(f'migrations/{new_filename}', 'x')
 
-# file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
-#  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
-# print(file.read())
+file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
+ DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
+print(list_of_files)
 
 
 # list_of_files = glob.glob('/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/*')
@@ -114,4 +114,4 @@ latest_file = max(list_of_files, key=os.path.getctime)
 # # File is saved at this point
 # print("File saved successfully.")
 
-print(list_of_files)
+# print(list_of_files)
