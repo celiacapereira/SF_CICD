@@ -101,13 +101,13 @@ import os
 # print(file.read())
 
 
-list_of_files = glob.glob('migrations/*')
+list_of_files = glob.glob('/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/*')
 latest_file = max(list_of_files, key=os.path.getctime)
 filename = latest_file[latest_file.find("V"):]
 
 new_filename = 'V1.1.' + str(int(filename[5]) + 1) + filename[filename.find("__"):]
 
-with open(f'migrations/{new_filename}', 'w+') as file:
+with open(f'/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/{new_filename}', 'w+') as file:
     file.write("""CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
                   DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING""")
     
