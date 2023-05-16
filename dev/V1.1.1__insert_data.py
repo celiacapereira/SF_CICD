@@ -3,7 +3,8 @@ import snowflake.connector
 from snowflake.connector import *
 import pandas as pd
 from snowflake.connector.pandas_tools import write_pandas
-from github import Github
+from github import Gi
+import base64
 
 account = os.environ['SF_ACCOUNT']
 password = os.environ['SF_PASSWORD']
@@ -106,8 +107,12 @@ file_content = """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REP
 # Create a GitHub instance
 github = Github(access_token)
 
-# Get the repository
+file_content_encoded = base64.b64encode(file_content.encode('utf-8')).decode('utf-8')
 repository = github.get_repo(f'{repository_owner}/{repository_name}')
 
+branch = repository.get_branch('main')
+branch_head = branch.commit.sha
+# Get the repository
+
 # Create the file in the repository
-repository.create_file(file_path, 'Commit message', file_content)
+repository.create_file(file_path, 'Commit message', file_content_encoded, branch=branch.name, sha=branch_head)
