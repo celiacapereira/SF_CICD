@@ -114,15 +114,42 @@ new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__
 # new_filename = 'V1.1.' + str(int(filename[5]) + 1) + filename[filename.find("__"):]
 
 # with open(f'/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/{new_filename}', 'w+') as file:
-#     file.write("""CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
-#                   DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING""")
+# #     file.write("""CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
+# #                   DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING""")
     
-# # File is saved at this point
-# print("File saved successfully.")
+# # # File is saved at this point
+# # print("File saved successfully.")
 
-# print(list_of_files)
+# # print(list_of_files)
 
 
+# # Personal access token
+# access_token = os.environ['TOKEN']
+
+# # Repository information
+# repository_owner = 'celiacapereira'
+# repository_name = 'SF_CICD'
+
+# # File information
+# file_path = f'migrations/{new_filename}'
+# file_content = """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
+#                   DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
+
+# # Create a GitHub instance
+# github = Github(access_token)
+
+# # Get the repository
+# repository = github.get_repo(f'{repository_owner}/{repository_name}')
+
+# # Create the file in the repository
+# repository.create_file(file_path, "commit2" ,file_content)
+list_of_files = glob.glob('migrations/*') # * means all if need specific format then *.csv
+latest_file = max(list_of_files, key=os.path.getctime)
+filename = latest_file[latest_file.find("V"):len(latest_file)]
+
+# print(filename)
+
+new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
 # Personal access token
 access_token = os.environ['TOKEN']
 
@@ -142,4 +169,4 @@ github = Github(access_token)
 repository = github.get_repo(f'{repository_owner}/{repository_name}')
 
 # Create the file in the repository
-repository.create_file(file_path, "commit2" ,file_content)
+repository.create_file(file_path, 'Commit message', file_content)
