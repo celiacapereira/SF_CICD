@@ -111,7 +111,11 @@ jobs:
              run:  pip install glob2 --upgrade 
 
            - name: Install github
-             run: pip install PyGithub     
+             run: pip install PyGithub   
+           
+           - name: import base64
+             run: import base64
+ 
 
            - name: Inserting data
              env:
