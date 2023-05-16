@@ -104,7 +104,7 @@ repository_owner = 'celiacapereira'
 repository_name = 'SF_CICD'
 
 # File information
-file_path = "migrations/V1.1.4__update_objects.sql"
+file_path = "migrations/V2.1.1__update_objects.sql"
 file_content =  """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
                     DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
 
