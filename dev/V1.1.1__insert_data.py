@@ -114,4 +114,4 @@ latest_file = max(list_of_files, key=os.path.getctime)
 # # File is saved at this point
 # print("File saved successfully.")
 
-print(latest_file)
+print(list_of_files)
