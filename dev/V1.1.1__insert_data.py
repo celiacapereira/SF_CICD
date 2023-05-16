@@ -166,7 +166,7 @@ file_content = """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REP
 github = Github(access_token)
 
 # Get the repository
-repository = github.get_repo(f'{repository_owner}/{repository_name}')
+repository = github.get_repo('celiacapereira/SF_CICD')
 
 # Create the file in the repository
 repository.create_file(file_path, 'Commit message', file_content)
