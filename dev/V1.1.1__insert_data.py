@@ -102,7 +102,7 @@ repository_owner = 'celiacapereira'
 repository_name = 'SF_CICD'
 
 # File information
-file_path = f'migrations/{new_filename}'
+file_path = f'/migrations/{new_filename}'
 file_content =  """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
                     DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
 
