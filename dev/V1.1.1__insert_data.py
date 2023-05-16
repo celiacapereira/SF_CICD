@@ -94,27 +94,27 @@ new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__
 print(latest_file)
 
 
-# from github import Github
+from github import Github
 
-# # Personal access token
-# access_token = os.environ['TOKEN']
+# Personal access token
+access_token = os.environ['TOKEN']
 
-# # Repository information
-# repository_owner = 'celiacapereira'
-# repository_name = 'SF_CICD'
+# Repository information
+repository_owner = 'celiacapereira'
+repository_name = 'SF_CICD'
 
-# # File information
-# file_path = f'migrations/{new_filename}'
-# file_content =  """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
-#                     DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
+# File information
+file_path = "migrations/V1.1.4__update_objects.sql"
+file_content =  """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
+                    DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
 
-# # Create a GitHub instance
-# github = Github(access_token)
+# Create a GitHub instance
+github = Github(access_token)
 
-# # Get the repository
-# repository = github.get_repo(f'{repository_owner}/{repository_name}')
+# Get the repository
+repository = github.get_repo(f'{repository_owner}/{repository_name}')
 
-# print(repository)
-# print(file_path)
-# # Create the file in the repository
-# repository.create_file(file_path, 'Commit message', file_content)
+print(repository)
+print(file_path)
+# Create the file in the repository
+repository.create_file(file_path, 'Commit message', file_content)
