@@ -101,15 +101,17 @@ import os
 # print(file.read())
 
 
-list_of_files = glob.glob('/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/*')
-latest_file = max(list_of_files, key=os.path.getctime)
-filename = latest_file[latest_file.find("V"):]
+# list_of_files = glob.glob('/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/*')
+# latest_file = max(list_of_files, key=os.path.getctime)
+# filename = latest_file[latest_file.find("V"):]
 
-new_filename = 'V1.1.' + str(int(filename[5]) + 1) + filename[filename.find("__"):]
+# new_filename = 'V1.1.' + str(int(filename[5]) + 1) + filename[filename.find("__"):]
 
-with open(f'/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/{new_filename}', 'w+') as file:
-    file.write("""CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
-                  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING""")
+# with open(f'/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/{new_filename}', 'w+') as file:
+#     file.write("""CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
+#                   DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING""")
     
-# File is saved at this point
-print("File saved successfully.")
+# # File is saved at this point
+# print("File saved successfully.")
+
+print(__file__)
