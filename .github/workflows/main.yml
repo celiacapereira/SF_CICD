@@ -118,7 +118,7 @@ jobs:
                SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
                SF_PASSWORD: ${{secrets.SF_PASSWORD}}
                SF_USERNAME: ${{secrets.SF_USERNAME}}
-               TOKEN: ${{secrets.TOKEN_ACCESS}}
+               TOKEN: ${{secrets.TOKEN}}
              run: python dev/V1.1.1__insert_data.py                  
 
                  
