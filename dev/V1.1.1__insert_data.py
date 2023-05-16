@@ -83,13 +83,13 @@ cursor.close()
 import glob
 import os
 
-list_of_files = glob.glob('migrations/*') # * means all if need specific format then *.csv
-latest_file = max(list_of_files, key=os.path.getctime)
-filename = latest_file[latest_file.find("V"):len(latest_file)]
+# list_of_files = glob.glob('migrations/*') # * means all if need specific format then *.csv
+# latest_file = max(list_of_files, key=os.path.getctime)
+# filename = latest_file[latest_file.find("V"):len(latest_file)]
 
-# print(filename)
+# # print(filename)
 
-new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
+# new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
 
 
 # file = open(f'migrations/{new_filename}', 'w+')
@@ -99,11 +99,11 @@ file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT
  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
 print(file)
 
-with open(f'migrations/{new_filename}', 'r') as f2:
-    data = f2.read()
-    print(data)
+# with open(f'migrations/{new_filename}', 'r') as f2:
+#     data = f2.read()
+#     print(data)
 
-print(list_of_files)
+# print(list_of_files)
 
 
 # list_of_files = glob.glob('/Users/Celia.A.Pereira/Desktop/SF_CID/SF_CICD/migrations/*')
