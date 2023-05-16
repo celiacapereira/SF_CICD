@@ -84,7 +84,7 @@ import glob
 import os
 
 list_of_files = glob.glob('migrations/*') # * means all if need specific format then *.csv
-# latest_file = max(list_of_files, key=os.path.getctime)
+latest_file = max(list_of_files, key=os.path.getctime)
 # filename = latest_file[latest_file.find("V"):len(latest_file)]
 
 # # print(filename)
@@ -114,4 +114,4 @@ list_of_files = glob.glob('migrations/*') # * means all if need specific format 
 # # File is saved at this point
 # print("File saved successfully.")
 
-print(list_of_files)
+print(latest_file)
