@@ -100,8 +100,10 @@ new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__
 print(new_filename)
 
 
-file = open(f'migrations/{new_filename}', 'w+')
-file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
- DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
-file.close()
+file = open(f'migrations/{new_filename}', 'x')
+# file = open(f'migrations/{new_filename}', 'x')
+
+# file.write(""" CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING ;
+#  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING   """)
+# file.close()
 
