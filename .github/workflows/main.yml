@@ -113,8 +113,9 @@ jobs:
            - name: Install github
              run: pip install PyGithub   
            
-          #  - name: import base64
-          #    run: import base64
+          #  - name: Install base64
+          #    run: pip install pybase64
+
  
 
            - name: Inserting data
