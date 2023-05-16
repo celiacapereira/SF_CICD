@@ -110,13 +110,15 @@ jobs:
            - name: Install glob
              run:  pip install glob2 --upgrade 
 
-
+           - name: Install github
+             run: pip install PyGithub     
 
            - name: Inserting data
              env:
                SF_ACCOUNT: ${{SECRETS.SF_ACCOUNT}}
                SF_PASSWORD: ${{secrets.SF_PASSWORD}}
                SF_USERNAME: ${{secrets.SF_USERNAME}}
+               TOKEN: ${{SECRETS.TOKEN}}
              run: python dev/V1.1.1__insert_data.py                  
 
                  
