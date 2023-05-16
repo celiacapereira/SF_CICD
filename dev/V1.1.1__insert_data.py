@@ -92,6 +92,8 @@ new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__
 # print(list_of_files)
 
 
+from github import Github
+
 # Personal access token
 access_token = os.environ['TOKEN']
 
@@ -100,19 +102,15 @@ repository_owner = 'celiacapereira'
 repository_name = 'SF_CICD'
 
 # File information
-file_path = f'migrations/{new_filename}'
-file_content = """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
-                  DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
+file_path = f'path/to/{new_filename}'
+file_content =  """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
+                    DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
 
 # Create a GitHub instance
 github = Github(access_token)
 
-file_content_encoded = base64.b64encode(file_content.encode('utf-8')).decode('utf-8')
+# Get the repository
 repository = github.get_repo(f'{repository_owner}/{repository_name}')
 
-branch = repository.get_branch('main')
-branch_head = branch.commit.sha
-# Get the repository
-
 # Create the file in the repository
-repository.create_file(file_path, 'Commit message', file_content_encoded, branch=branch.name, sha=branch_head)
+repository.create_file(file_path, 'Commit message', file_content)
