@@ -3,7 +3,7 @@ import snowflake.connector
 from snowflake.connector import *
 import pandas as pd
 from snowflake.connector.pandas_tools import write_pandas
-from github import Gi
+from github import Github
 import base64
 
 account = os.environ['SF_ACCOUNT']
