@@ -127,19 +127,19 @@ jobs:
              run: python dev/V1.1.1__insert_data.py                  
 
                  
-           - name: Run schemachange
-             env:
-                SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
-                SF_USERNAME: ${{ secrets.SF_USERNAME }}
-                SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
-                SF_ROLE: ACCOUNTADMIN
-                SF_WAREHOUSE: COMPUTE_WH
-                SF_DATABASE: DEV
-             run: |
-                echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
-                python --version
-                echo "Step 1: Installing schemachange"
-                pip install schemachange
+          #  - name: Run schemachange
+          #    env:
+          #       SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+          #       SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          #       SNOWFLAKE_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          #       SF_ROLE: ACCOUNTADMIN
+          #       SF_WAREHOUSE: COMPUTE_WH
+          #       SF_DATABASE: DEV
+          #    run: |
+          #       echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          #       python --version
+          #       echo "Step 1: Installing schemachange"
+          #       pip install schemachange
                 
-                echo "Step 2: Running schemachange"
-                schemachange -f $GITHUB_WORKSPACE/migrations -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table
+          #       echo "Step 2: Running schemachange"
+          #       schemachange -f $GITHUB_WORKSPACE/migrations -a $SF_ACCOUNT -u $SF_USERNAME -r $SF_ROLE -w $SF_WAREHOUSE -d $SF_DATABASE -c $SF_DATABASE.SCHEMACHANGE.CHANGE_HISTORY --create-change-history-table

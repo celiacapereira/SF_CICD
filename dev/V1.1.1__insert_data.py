@@ -88,9 +88,10 @@ list_of_files = glob.glob('migrations/*') # * means all if need specific format 
 latest_file = max(list_of_files, key=os.path.getctime)
 filename = latest_file[latest_file.find("V"):len(latest_file)]
 
+
 new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
 
-print(new_filename)
+print(latest_file)
 
 
 # from github import Github
