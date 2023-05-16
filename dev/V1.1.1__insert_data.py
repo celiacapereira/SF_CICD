@@ -102,7 +102,7 @@ repository_owner = 'celiacapereira'
 repository_name = 'SF_CICD'
 
 # File information
-file_path = f'/migrations/{new_filename}'
+file_path = f'migrations/{new_filename}'
 file_content =  """CREATE OR REPLACE TABLE DEV.REPORT.TITANIC_DATA CLONE  DEV.REPORT.TITANIC_REPORT_STAGING;
                     DROP TABLE DEV.REPORT.TITANIC_REPORT_STAGING;"""
 
@@ -112,5 +112,7 @@ github = Github(access_token)
 # Get the repository
 repository = github.get_repo(f'{repository_owner}/{repository_name}')
 
+print(repository)
+print(file_path)
 # Create the file in the repository
 repository.create_file(file_path, 'Commit message', file_content)
