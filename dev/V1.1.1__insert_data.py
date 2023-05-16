@@ -151,7 +151,7 @@ filename = latest_file[latest_file.find("V"):len(latest_file)]
 
 new_filename = 'V1.1.' + str((int(filename[5]) +1)) + filename[filename.find("__"):len(filename)]
 # Personal access token
-access_token = os.environ['TOKEN']
+access_token = os.environ['TOKEN_ACCESS']
 
 # Repository information
 repository_owner = 'celiacapereira'
